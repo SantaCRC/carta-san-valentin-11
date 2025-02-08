@@ -14,21 +14,20 @@
 /* Estilos para dispositivos móviles */
 @media only screen and (max-width: 600px) {
   #card {
-    width: 90%; /* Reducir el ancho para dispositivos móviles */
-    height: auto; /* Permitir que la altura se ajuste automáticamente */
-    margin: 2em auto; /* Ajustar el margen */
-    position: static; /* Cambiar la posición a estática para que no sea fija */
-    visibility: none; /* Hacer que el elemento sea visible */
+    width: 90%;
+    height: auto;
+    margin: 2em auto;
+    position: static;
+    visibility: visible;
     top: 50px;
   }
 
-  .side.side.one {
+  .side.one {
     display: none;
   }
 
   #card p {
-    padding-left: 0 !important; /* Eliminar el relleno a la izquierda en dispositivos móviles */
-    padding-right: 0 !important; /* Eliminar el relleno a la derecha en dispositivos móviles */
+    padding: 0 !important;
     font-size: 1.3em !important;
   }
 
@@ -50,8 +49,7 @@
 #card p {
   font-size: 1.5em;
   text-align: justify;
-  padding-left: 30px; /* Espacio en blanco a la izquierda */
-  padding-right: 30px; /* Espacio en blanco a la derecha */
+  padding: 0 30px;
 }
 
 .side {
@@ -65,10 +63,9 @@
   width: 320px;
   transform: skew(10deg, 20deg);
   background: linear-gradient(90deg, #fff, #fff 40%, #ddd);
-  display: flex; /* Utiliza flexbox para centrar el corazón verticalmente */
-  justify-content: center; /* Centra horizontalmente el contenido */
-  align-items: center; /* Centra verticalmente el contenido */
-  transform: skew(10deg, 20deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   overflow: hidden;
 }
@@ -126,7 +123,6 @@ body {
   display: inline-block;
   height: 180px;
   top: 50px;
-  left: 0;
   transform: rotate(-45deg);
   width: 180px;
   filter: drop-shadow(0 -10px 25px rgba(0, 0, 0, 0.3));
@@ -191,7 +187,7 @@ body {
 
 .text {
   position: absolute;
-  font-family: arial;
+  font-family: "Sacramento", cursive;
   letter-spacing: 3.5px;
   text-align: center;
   color: white;
@@ -240,6 +236,6 @@ body {
   }
 
   .text {
-    font-size: 1em; /* Ajuste del tamaño de fuente */
+    font-size: 1em;
   }
 }
