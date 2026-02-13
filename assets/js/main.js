@@ -47,16 +47,14 @@ $(document).ready(function () {
             $('#card').css({ 
                 'visibility': 'visible', 
                 'opacity': 0, 
-                'transform': isMobile() ? 'translate(-50%, -50%) scale(0.1)' : 'scale(0.1)' 
+                'transform': isMobile() ? 'translate(-50%, -50%) scale(0.1)' : 'translate(-50%, -50%) scale(0.1)' 
             });
             
             $('#card').animate({ 'opacity': 1 }, {
                 duration: 1000, 
                 step: function (now, fx) {
                     var scale = 1 + Math.sin(now * Math.PI) * 0.1;
-                    var transform = isMobile() 
-                        ? 'translate(-50%, -50%) scale(' + scale + ')' 
-                        : 'scale(' + scale + ')';
+                    var transform = 'translate(-50%, -50%) scale(' + scale + ')';
                     $(this).css('transform', transform);
                 }
             });

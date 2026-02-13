@@ -7,15 +7,18 @@
 }
 
 #card {
-  height: 500px;
+  height: auto;
+  max-height: 85vh;
   width: 800px;
-  margin: 5em auto;
+  margin: 0;
   position: fixed;
-  top: -15px;
-  left: 25%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   visibility: hidden;
   z-index: 100;
+  overflow: hidden;
 }
 
 /* Botón de música */
@@ -135,38 +138,58 @@
 /* Estilos para dispositivos móviles */
 @media only screen and (max-width: 768px) {
   #card {
-    width: 95%;
+    width: 92%;
     height: auto;
-    margin: 1em auto;
+    max-height: 80vh;
+    margin: 0;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     flex-direction: column;
     visibility: hidden;
+    overflow: hidden;
   }
 
   .side.one {
     display: flex !important;
     width: 100% !important;
-    height: 200px !important;
+    height: 120px !important;
+    min-height: 120px !important;
     transform: none !important;
-    border-radius: 15px 15px 0 0;
+    border-radius: 12px 12px 0 0;
     background: linear-gradient(180deg, #ffe0e9 0%, #ffc8d8 100%) !important;
+    flex-shrink: 0;
   }
 
   .side.two {
     width: 100%;
     height: auto;
+    max-height: calc(80vh - 120px);
     transform: none !important;
-    border-radius: 0 0 15px 15px;
+    border-radius: 0 0 12px 12px;
     background: white !important;
-    padding: 20px;
+    padding: 12px 8px;
+    overflow-y: auto;
+    box-sizing: border-box;
   }
 
   #card p {
-    padding: 0 !important;
-    font-size: 1.1em !important;
+    padding: 0 2px !important;
+    font-size: 0.9em !important;
+    line-height: 1.4 !important;
+    margin: 6px 0 !important;
+  }
+
+  #card h2 {
+    font-size: 1.8em !important;
+    margin: 3px 0 8px 0 !important;
+  }
+
+  .card-content {
+    padding: 2px !important;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .valentines-day {
@@ -190,7 +213,11 @@
   }
 
   .side.one .fa-heart {
-    font-size: 4em !important;
+    font-size: 3em !important;
+  }
+  
+  .decorative-hearts .small-heart {
+    font-size: 1em !important;
   }
 }
 
@@ -200,20 +227,46 @@
   }
   
   .tap-hint {
-    font-size: 0.9em;
+    font-size: 0.85em;
+    bottom: -55px;
+  }
+  
+  #card {
+    width: 95%;
+    max-height: 75vh;
+  }
+  
+  .side.one {
+    height: 100px !important;
+    min-height: 100px !important;
+  }
+  
+  .side.two {
+    max-height: calc(75vh - 100px);
+    padding: 10px 6px;
+    box-sizing: border-box;
   }
   
   #card h2 {
-    font-size: 2em !important;
+    font-size: 1.5em !important;
+    margin: 2px 0 5px 0 !important;
+  }
+  
+  #card p {
+    font-size: 0.85em !important;
+    line-height: 1.35 !important;
+    margin: 5px 0 !important;
+    padding: 0 2px !important;
   }
 }
 
 #card h2 {
-  font-size: 3em;
-  margin: 0;
+  font-size: 2.5em;
+  margin: 8px 0 12px 0;
   color: #ff6b9d;
   text-align: center;
   animation: bounce-in 0.8s ease-out;
+  line-height: 1.2;
 }
 
 @keyframes bounce-in {
@@ -231,16 +284,22 @@
 }
 
 #card p {
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-align: justify;
-  padding: 0 30px;
-  line-height: 1.6;
+  padding: 0 20px;
+  line-height: 1.5;
   font-family: 'Dancing Script', cursive;
+  margin: 8px 0;
+  word-wrap: break-word;
 }
 
 .card-content {
-  padding: 10px;
+  padding: 8px;
   animation: fade-in-up 1s ease-out 0.3s both;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @keyframes fade-in-up {
@@ -255,75 +314,90 @@
 }
 
 .greeting {
-  font-size: 1.8em !important;
+  font-size: 1.6em !important;
   font-weight: 700;
   color: #c06c84;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   text-align: left !important;
+  line-height: 1.2;
 }
 
 .message {
-  font-size: 1.3em !important;
-  margin: 15px 0;
+  font-size: 1.15em !important;
+  margin: 10px 0;
   color: #555;
+  line-height: 1.45;
 }
 
 .wishes {
-  font-size: 1.6em !important;
+  font-size: 1.45em !important;
   font-weight: 600;
   color: #ff6b9d;
   text-align: center !important;
-  margin: 20px 0;
+  margin: 12px 0;
+  line-height: 1.2;
 }
 
 .quote-box {
   background: linear-gradient(135deg, #ffe0e9 0%, #fff5f7 100%);
-  padding: 20px;
-  border-radius: 15px;
-  margin: 20px 0;
+  padding: 14px 10px;
+  border-radius: 10px;
+  margin: 14px 0;
   text-align: center;
   border-left: 4px solid #ff6b9d;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .quote {
-  font-size: 1.2em !important;
+  font-size: 1.05em !important;
   font-style: italic;
   color: #c06c84;
-  margin: 10px 0;
-  padding: 0 !important;
+  margin: 6px 0;
+  padding: 0 5px !important;
+  line-height: 1.35;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .quote-box .fa-quote-left,
 .quote-box .fa-quote-right {
   color: #ff6b9d;
-  font-size: 1.5em;
+  font-size: 1.2em;
   opacity: 0.6;
+  margin: 0 3px;
 }
 
 .signature {
-  font-size: 1.5em !important;
+  font-size: 1.3em !important;
   text-align: right !important;
-  margin-top: 30px;
+  margin-top: 15px;
   color: #666;
+  line-height: 1.3;
 }
 
 .signature .name {
   font-weight: 700;
   color: #ff6b9d;
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 .side {
   background: #eee;
-  height: 550px;
+  height: auto;
+  max-height: 85vh;
   width: 400px;
-  padding: 10px;
+  padding: 15px 10px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
 }
 
 .side.one {
   width: 320px;
+  height: auto;
+  max-height: 85vh;
   transform: skew(10deg, 20deg);
   background: linear-gradient(135deg, #ffe0e9 0%, #ffc8d8 100%);
   display: flex;
@@ -331,11 +405,16 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
+  padding: 20px;
 }
 
 .side.two {
   transform: skew(10deg, -15deg);
   background: linear-gradient(-90deg, #fff, #fff 40%, #fef8fa);
+  overflow-y: auto;
+  padding: 25px 12px;
+  box-sizing: border-box;
 }
 
 .decorative-hearts {
@@ -541,8 +620,8 @@ body {
 /* Mejoras adicionales para móviles */
 @media screen and (max-width: 768px) {
   #card {
-    width: 95%;
-    max-width: 95%;
+    width: 92%;
+    max-width: 92%;
     margin: 0;
   }
 
@@ -553,7 +632,8 @@ body {
   }
   
   .side.two {
-    padding: 15px;
+    padding: 12px 8px;
+    box-sizing: border-box;
   }
 
   .text {
@@ -562,50 +642,180 @@ body {
   }
   
   .card-content {
-    padding: 5px;
+    padding: 3px;
   }
   
   .quote-box {
-    padding: 15px;
-    margin: 15px 0;
+    padding: 10px 8px;
+    margin: 10px 2px;
+    border-radius: 8px;
+    width: calc(100% - 4px);
+  }
+  
+  .greeting {
+    font-size: 1.2em !important;
+    margin-bottom: 8px !important;
+    line-height: 1.2 !important;
+  }
+  
+  .message {
+    font-size: 0.9em !important;
+    line-height: 1.4 !important;
+    margin: 8px 0 !important;
+  }
+  
+  .wishes {
+    font-size: 1.1em !important;
+    margin: 10px 0 !important;
+    line-height: 1.2 !important;
+  }
+  
+  .signature {
+    font-size: 1em !important;
+    margin-top: 12px !important;
+    line-height: 1.25 !important;
   }
 }
 
 @media screen and (max-width: 480px) {
   .greeting {
-    font-size: 1.5em !important;
+    font-size: 1.1em !important;
+    margin-bottom: 6px !important;
+    line-height: 1.15 !important;
   }
   
   .message {
-    font-size: 1.1em !important;
+    font-size: 0.85em !important;
+    line-height: 1.35 !important;
+    margin: 8px 0 !important;
   }
   
   .wishes {
-    font-size: 1.4em !important;
+    font-size: 1em !important;
+    margin: 8px 0 !important;
+    line-height: 1.15 !important;
   }
   
   .signature {
-    font-size: 1.3em !important;
+    font-size: 0.95em !important;
+    margin-top: 10px !important;
+    line-height: 1.2 !important;
+  }
+  
+  .signature .name {
+    font-size: 1.1em !important;
   }
   
   .quote {
-    font-size: 1em !important;
+    font-size: 0.8em !important;
+    padding: 2px 5px !important;
+    line-height: 1.3 !important;
+    margin: 5px 0 !important;
+  }
+  
+  .quote-box {
+    padding: 8px 6px !important;
+    margin: 8px 2px !important;
+    border-radius: 8px !important;
+    width: calc(100% - 4px) !important;
+  }
+  
+  .quote-box .fa-quote-left,
+  .quote-box .fa-quote-right {
+    font-size: 0.9em;
   }
 }
 
 /* Optimización para landscape en móviles */
 @media screen and (max-width: 900px) and (orientation: landscape) {
   .valentines-day {
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.4);
   }
   
   #card {
     top: 50%;
-    max-height: 90vh;
+    max-height: 85vh;
     overflow-y: auto;
   }
   
   .side.one {
-    height: 150px !important;
+    height: 80px !important;
+    min-height: 80px !important;
   }
+  
+  .side.two {
+    max-height: calc(85vh - 80px);
+    padding: 8px 6px;
+    box-sizing: border-box;
+  }
+  
+  #card h2 {
+    font-size: 1.4em !important;
+    margin: 2px 0 !important;
+  }
+  
+  #card p {
+    font-size: 0.75em !important;
+    line-height: 1.3 !important;
+    margin: 4px 0 !important;
+    padding: 0 2px !important;
+  }
+  
+  .greeting {
+    font-size: 0.95em !important;
+  }
+  
+  .message {
+    font-size: 0.75em !important;
+  }
+  
+  .wishes {
+    font-size: 0.9em !important;
+  }
+  
+  .signature {
+    font-size: 0.85em !important;
+  }
+  
+  .quote-box {
+    padding: 6px 5px !important;
+    margin: 6px 2px !important;
+    border-radius: 6px !important;
+    width: calc(100% - 4px) !important;
+  }
+  
+  .quote {
+    font-size: 0.7em !important;
+    padding: 2px 3px !important;
+  }
+}
+
+/* Estilos de scrollbar personalizados */
+.side.two::-webkit-scrollbar,
+#card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.side.two::-webkit-scrollbar-track,
+#card::-webkit-scrollbar-track {
+  background: rgba(255, 192, 203, 0.1);
+  border-radius: 10px;
+}
+
+.side.two::-webkit-scrollbar-thumb,
+#card::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+  border-radius: 10px;
+}
+
+.side.two::-webkit-scrollbar-thumb:hover,
+#card::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff385c 0%, #c06c84 100%);
+}
+
+/* Asegurar scroll suave en todos los navegadores */
+.side.two,
+#card {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
