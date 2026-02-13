@@ -3,40 +3,69 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Feliz San Valentín</title>
+    <title>Feliz San Valentín 💕</title>
 </head>
 
 <body>
-    <div class="valentines-day">
+    <!-- Corazones flotantes de fondo -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+    
+    <!-- Canvas para confetti -->
+    <canvas id="confetti-canvas"></canvas>
+    
+    <!-- Botón de música -->
+    <button class="music-toggle" id="musicToggle" aria-label="Reproducir música">
+        <i class="fas fa-music"></i>
+    </button>
+    
+    <!-- Audio de fondo -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_4a46b0ffe9.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="valentines-day" id="valentinesEnvelope">
         <div class="envelope"></div>
         <div class="heart"></div>
         <div class="text">¡FELIZ DÍA DE<br>SAN VALENTÍN!</div>
+        <div class="tap-hint">Toca para abrir 💕</div>
         <div class="front"></div>
     </div>
 
     <div id="card">
         <div class="side one">
             <i class="fas fa-heart"></i>
+            <div class="decorative-hearts">
+                <i class="fas fa-heart small-heart"></i>
+                <i class="fas fa-heart small-heart"></i>
+                <i class="fas fa-heart small-heart"></i>
+            </div>
         </div>
         <div class="side two">
             <h2>🌷🌷🌷</h2>
-            <p>Querida Samy,</p>
-            <p>
-                En este San Valentín, quiero recordarte lo especial que eres. Cada sonrisa compartida, cada momento
-                juntos es un tesoro. Eres una persona maravillosa, tanto por dentro como por fuera. Valoro cada instante
-                compartido. Gracias por ser quien eres. 🫶
-            </p>
-            <p>
-                ¡Feliz San Valentín!
-            </p>
-            <p>
-                Con cariño,<br>
-                Fabian
-            </p>
+            <div class="card-content">
+                <p class="greeting">Querida Samy,</p>
+                <p class="message">
+                    En este San Valentín, quiero recordarte lo especial que eres. Cada sonrisa compartida, cada momento
+                    juntos es un tesoro. Eres una persona maravillosa, tanto por dentro como por fuera. Valoro cada instante
+                    compartido. Gracias por ser quien eres. 🫶
+                </p>
+                <p class="wishes">
+                    ¡Feliz San Valentín!
+                </p>
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="quote">"El amor es la poesía de los sentidos"</p>
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <p class="signature">
+                    Con todo mi cariño,<br>
+                    <span class="name">Fabian, tu tonoto</span> 💖
+                </p>
+            </div>
         </div>
     </div>
 
