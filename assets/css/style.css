@@ -396,7 +396,7 @@ body {
 }
 
 .valentines-day {
-  position: relative;
+  position: fixed;
   cursor: pointer;
   transition: transform 0.3s ease;
   touch-action: manipulation;
