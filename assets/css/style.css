@@ -329,7 +329,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: relative;
   overflow: hidden;
 }
 
@@ -434,7 +434,7 @@ body {
 }
 
 .heart {
-  position: fixed;
+  position: relative;
   background-color: #e01911;
   display: inline-block;
   height: 180px;
