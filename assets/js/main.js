@@ -7,15 +7,36 @@ $(document).ready(function () {
     const bgMusic = $('#bgMusic')[0];
     let musicPlaying = false;
     
-    musicToggle.click(function() {
+    // Función para intentar reproducir música
+    function playMusic() {
+        const playPromise = bgMusic.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                musicToggle.addClass('playing');
+                musicPlaying = true;
+                console.log('Música iniciada correctamente');
+            }).catch(error => {
+                console.log('No se pudo reproducir automáticamente:', error);
+                musicToggle.removeClass('playing');
+                musicPlaying = false;
+                // Mostrar indicación visual de que hay que hacer clic en el botón
+                musicToggle.css('animation', 'pulse-hint 1s ease-in-out 3');
+            });
+        }
+    }
+    
+    // Toggle de música manual
+    musicToggle.on('click touchend', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
         if (musicPlaying) {
             bgMusic.pause();
             musicToggle.removeClass('playing');
             musicPlaying = false;
         } else {
-            bgMusic.play().catch(e => console.log('Error al reproducir música:', e));
-            musicToggle.addClass('playing');
-            musicPlaying = true;
+            playMusic();
         }
     });
     
@@ -23,11 +44,15 @@ $(document).ready(function () {
     $('.valentines-day').on('click touchstart', function (e) {
         e.preventDefault();
         
-        // Reproducir música automáticamente al abrir
+        // Solo permitir un clic
+        if ($(this).hasClass('clicked')) {
+            return;
+        }
+        $(this).addClass('clicked');
+        
+        // Intentar reproducir música al abrir (interacción del usuario)
         if (!musicPlaying) {
-            bgMusic.play().catch(e => console.log('Error al reproducir música:', e));
-            musicToggle.addClass('playing');
-            musicPlaying = true;
+            playMusic();
         }
         
         // Animación de desvanecimiento de los elementos del sobre
@@ -47,7 +72,7 @@ $(document).ready(function () {
             $('#card').css({ 
                 'visibility': 'visible', 
                 'opacity': 0, 
-                'transform': isMobile() ? 'translate(-50%, -50%) scale(0.1)' : 'translate(-50%, -50%) scale(0.1)' 
+                'transform': 'translate(-50%, -50%) scale(0.1)' 
             });
             
             $('#card').animate({ 'opacity': 1 }, {
